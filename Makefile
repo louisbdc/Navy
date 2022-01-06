@@ -2,7 +2,7 @@
 ## EPITECH PROJECT, 2021
 ## Makefile
 ## File description:
-## Makefile
+## my_hunter
 ##
 
 SRC	=	$(shell find -name '*.c')
@@ -11,23 +11,22 @@ OBJ	=	$(SRC:.c=.o)
 
 CC	=	gcc
 
-CFLAGS	=	-Wall -Wextra -I includes -g3
+CFLAGS	=	-Wall -Wextra -I include -g3
 
-NAME	=	navy
+LDFLAGS	=	-lcsfml-system -lcsfml-graphics -lcsfml-audio -lcsfml-window
+
+NAME	=	my_runner
 
 all:	$(NAME)
 
 $(NAME):	$(OBJ)
-	@$(CC) -o $(NAME) $(OBJ) $(CFLAGS)
+	@$(CC) -o $(NAME) $(OBJ) $(LDFLAGS)
 	@rm -f $(shell find -name '*.o')
-	@rm -f $(shell find -name '*tmp')
 
 clean:
 	@rm -f $(shell find -name '*~')
 	@rm -f $(shell find -name '*.o')
-	@rm -f $(shell find -name '*tmp')
 	@rm -f vgcore.*
-	@rm -rf .idea*
 
 fclean:	clean
 	@rm -f $(NAME)
